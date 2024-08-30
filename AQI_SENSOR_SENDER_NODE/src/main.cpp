@@ -48,15 +48,6 @@ void loop() {
       printValue("PM2.5", sensor.atm.getPM2_5());
       printValue("PM10", sensor.atm.getPM10());
 
-      // Supported or not, depending on the sensor model
-      Serial.println("Number of particles with diameter of (/0.1L) --");
-      printValue(">=0.3um", sensor.count.get0_3());
-      printValue(">=0.5um", sensor.count.get0_5());
-      printValue(">=1.0um", sensor.count.get1());
-      printValue(">=2.5um", sensor.count.get2_5());
-      printValue(">=5.0um", sensor.count.get5());
-      printValue(">=10um", sensor.count.get10());
-
       Serial.println();
     }
   }
