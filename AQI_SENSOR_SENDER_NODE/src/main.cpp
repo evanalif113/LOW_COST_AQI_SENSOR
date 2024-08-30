@@ -13,11 +13,7 @@ BluetoothSerial SerialBT;
 unsigned long previousMillis = 0;
 const long interval = 5000; // Interval at which to read the sensor (milliseconds)
 
-void printValue(const char* label, int value) {
-  SerialBT.print(label);
-  SerialBT.print(": ");
-  SerialBT.println(value);
-}
+
 
 void setup() {
   Serial.begin(115200);
@@ -30,6 +26,12 @@ void setup() {
   }
   Serial.println("HM330X initialized");
   Serial.println();
+}
+
+void printValue(const char* label, int value) {
+  SerialBT.print(label);
+  SerialBT.print(": ");
+  SerialBT.println(value);
 }
 
 void loop() {
