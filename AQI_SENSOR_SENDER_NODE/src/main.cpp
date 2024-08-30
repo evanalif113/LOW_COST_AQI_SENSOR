@@ -1,23 +1,16 @@
 #include <Wire.h>
 #include <Tomoto_HM330X.h>
-#include "BluetoothSerial.h"
-
-#if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
-#error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
-#endif
 
 Tomoto_HM330X sensor;
-BluetoothSerial SerialBT;
+
 // Tomoto_HM330X sensor(Wire1); // to use the alternative wire
 
 unsigned long previousMillis = 0;
 const long interval = 5000; // Interval at which to read the sensor (milliseconds)
 
 
-
 void setup() {
   Serial.begin(115200);
-  SerialBT.begin("Air Quality Monitor"); // Bluetooth device name
   Wire.begin(21, 22); // Specify the I2C pins
 
   if (!sensor.begin()) {
@@ -29,9 +22,9 @@ void setup() {
 }
 
 void printValue(const char* label, int value) {
-  SerialBT.print(label);
-  SerialBT.print(": ");
-  SerialBT.println(value);
+  Serial.print(label);
+  Serial.print(": ");
+  Serial.println(value);
 }
 
 void loop() {
